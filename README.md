@@ -41,10 +41,9 @@ npm install -g @google/gemini-cli
 *   **"Permission Denied":** Always try adding `sudo` to the beginning of the command.
 
 ### Step 3: Download the Code
-Copy this exact line of code, paste it into your Terminal, and press Enter:
+You don't need any special developer tools to get the code. Just paste this line into your Terminal and hit Enter. It will download and unzip everything for you:
 ```bash
-git clone https://github.com/mina-genee/ai-daily-update.git
-cd ai-daily-update
+curl -L https://github.com/mina-genee/AI-Daily-Inbox-Recap/archive/refs/heads/main.zip -o ai-daily-update.zip && unzip ai-daily-update.zip && cd AI-Daily-Inbox-Recap-main
 ```
 
 ### Step 4: Set Your Preferences
