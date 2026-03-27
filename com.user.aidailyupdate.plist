@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.aidailyupdate</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <!-- Checks if the current hour in EST/EDT is 17 (5 PM). If yes, runs the gemini prompt. -->
+        <string>if [ "$(TZ='America/New_York' date +\%H)" = "17" ]; then gemini "Run AI Daily Update"; fi</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <array>
+        <!-- Runs at the top of every hour to check the timezone-adjusted time -->
+        <dict>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/tmp/ai_daily_update.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/ai_daily_update.error.log</string>
+</dict>
+</plist>

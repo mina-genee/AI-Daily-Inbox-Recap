@@ -1,0 +1,26 @@
+# AI Daily Update Configuration
+
+# Define what platforms the AI should scan
+sources:
+  gmail:
+    enabled: true
+    lookback_hours: 24
+  calendar:
+    enabled: true
+    lookahead_days: 1
+  slack:
+    enabled: false # Set to true if you have a Slack MCP server enabled
+  beeper:
+    enabled: false # Set to true if you run a local Beeper bridge
+
+# Define where the output should go
+delivery:
+  method: "gmail" # Options: "gmail", "slack", "stdout"
+  recipient: "hello@genee.coach" # Required if method is gmail
+
+# Custom synthesis rules. The Agnostic Core will apply these before categorizing.
+rules:
+  - "Flag any items related to 'Strategy', 'Billing', or 'Security' as Urgent."
+  - "If an email is asking for availability, place it in Action Required with a 'Needs Reply' pill."
+  - "If a meeting was accepted or declined, place it in FYI with a 'Confirmed' or 'Declined' pill."
+  - "Exclude marketing or promotional emails unless they mention 'Invoice' or 'Receipt'."
