@@ -18,14 +18,21 @@ The Terminal is just a text-based way to talk to your computer.
 *   🍎 **If you are on a Mac:** Press `Command + Space` on your keyboard, type the word `Terminal`, and press `Enter`. A black or white box will pop up.
 *   🪟 **If you are on Windows:** Open your Start menu, type the word `PowerShell`, and press `Enter`.
 
-### Step 2: Download the Code
+### Step 2: Install the Gemini CLI
+This skill runs on the Gemini AI Command Line tool. You need to install it first. Copy this code, paste it into your Terminal, and press Enter:
+```bash
+npm install -g @google/gemini-cli
+```
+*(If you get a permission error, try: `sudo npm install -g @google/gemini-cli`)*
+
+### Step 3: Download the Code
 Copy this exact line of code, paste it into your Terminal, and press Enter:
 ```bash
 git clone https://github.com/yourusername/ai-daily-update.git
 cd ai-daily-update
 ```
 
-### Step 3: Set Your Preferences
+### Step 4: Set Your Preferences
 Tell the AI your email address and what rules you want it to follow. Run these two lines to create your settings files:
 ```bash
 cp env.example .env
@@ -33,7 +40,7 @@ cp config.example.yaml config.yaml
 ```
 *Open the `config.yaml` file in any text editor. You can type out plain-English rules like "Flag emails from investors as Urgent!"*
 
-### Step 4: Install the Skill
+### Step 5: Install the Skill
 Now, let's teach the AI how to do this specific job. In your Terminal, paste this code and press Enter:
 ```bash
 gemini skills install ./ --scope user
@@ -61,8 +68,8 @@ Did you get an error saying "you must specify the GEMINI_API_KEY"? Don't panic! 
 You are fully set up! Whenever you want your daily briefing, here is what you do:
 
 1. Open your Terminal.
-2. Type `gemini` and press Enter to wake up the AI chat.
-3. Simply ask the AI:
+2. Type `gemini` and press `Enter`. You will see a greeting welcoming you to the Gemini CLI.
+3. Now that you are inside the AI chat, simply type:
    **"Run my AI Daily Update."**
 
 **What to expect when you run this:**
@@ -82,7 +89,7 @@ launchctl load automation/com.user.aidailyupdate.plist
 ## 🎨 Make it Yours (No coding required)
 Don't like the colors? Want to send it to Slack instead of Gmail? You don't need to be a developer to customize this skill!
 
-*   **Change the Design:** Open the `template.html` file in any text editor (like Notepad or TextEdit). You can change the hex color codes (like `#FFFFFF` for white) or swap out the fonts without breaking the AI's logic.
+*   **Change the Design:** Open the `assets/template.html` file in any text editor (like Notepad or TextEdit). You can change the hex color codes (like `#FFFFFF` for white) or swap out the fonts without breaking the AI's logic.
 *   **Change the Rules:** Open `config.yaml`. Under the `rules` section, just type what you want the AI to do in plain English. For example: *"If an email mentions 'invoice', always put it in Action Required."*
 *   **Share your changes:** If you create a great new color scheme or rule set, go to your Terminal and run:
     ```bash
