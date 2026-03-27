@@ -82,7 +82,7 @@ launchctl load automation/com.user.aidailyupdate.plist
 ## 🎨 Make it Yours (No coding required)
 Don't like the colors? Want to send it to Slack instead of Gmail? You don't need to be a developer to customize this skill!
 
-*   **Change the Design:** Open the `assets/template.html` file in any text editor (like Notepad or TextEdit). You can change the hex color codes (like `#FFFFFF` for white) or swap out the fonts without breaking the AI's logic.
+*   **Change the Design:** Open the `template.html` file in any text editor (like Notepad or TextEdit). You can change the hex color codes (like `#FFFFFF` for white) or swap out the fonts without breaking the AI's logic.
 *   **Change the Rules:** Open `config.yaml`. Under the `rules` section, just type what you want the AI to do in plain English. For example: *"If an email mentions 'invoice', always put it in Action Required."*
 *   **Share your changes:** If you create a great new color scheme or rule set, go to your Terminal and run:
     ```bash
