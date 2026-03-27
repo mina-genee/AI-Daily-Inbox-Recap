@@ -23,11 +23,11 @@ This skill runs on the Gemini AI Command Line tool. You need to install it first
 ```bash
 npm install -g @google/gemini-cli
 ```
-*   **(If you get an error saying 'npm not found' or 'zsh: command not found: npm'):** Your computer needs a tool called Node.js. Don't worry, you can install it instantly! Just paste this code and hit Enter:
-    ```bash
-    curl -fsSL https://fnm.vercel.sh | bash && source ~/.zshrc && fnm install --lts
-    ```
-    *Once that finishes, try the `npm install` command from Step 2 again.*
+*   **(If you get an error saying 'npm not found' or 'zsh: command not found: npm'):** Your computer needs a tool called Node.js. 
+    1. Go to **[nodejs.org](https://nodejs.org)** in your web browser.
+    2. Click the button to download the **"LTS" (Long Term Support)** version.
+    3. Open the downloaded file and run the installer (just click "Next" through the default settings).
+    4. Once finished, **close your Terminal window entirely and open a new one**. Then try the `npm install` command again!
 *   **(If you get a permission error):** try: `sudo npm install -g @google/gemini-cli`. 
 *   **🔐 Password Warning:** When you type `sudo`, it will ask for your computer password. **You will not see any characters (not even stars) as you type.** This is normal! Just type your password and hit `Enter`.
 
@@ -35,7 +35,7 @@ npm install -g @google/gemini-cli
 
 ## 🛠 Troubleshooting (If things go wrong)
 
-*   **"npm: command not found":** Run the `curl` command listed in Step 2 to install Node.js automatically.
+*   **"npm: command not found":** Download and install Node.js from **[nodejs.org](https://nodejs.org)**. If asked, choose **ARM64** for newer Macs (M1/M2/M3 chips) or **x64** for older Intel Macs and Windows PCs.
 *   **"gemini: command not found":** Your computer hasn't registered the installation yet. Close your Terminal window, open a new one, and try typing `gemini` again.
 *   **"Missing API Key":** See Phase 2 below. You must have your key saved in the `.env` file!
 *   **"Permission Denied":** Always try adding `sudo` to the beginning of the command.
