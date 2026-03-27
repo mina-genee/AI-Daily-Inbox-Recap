@@ -23,7 +23,18 @@ This skill runs on the Gemini AI Command Line tool. You need to install it first
 ```bash
 npm install -g @google/gemini-cli
 ```
-*(If you get a permission error, try: `sudo npm install -g @google/gemini-cli`)*
+*   **(If you get an error saying 'npm not found'):** You need to download Node.js first. Go to [nodejs.org](https://nodejs.org) and download the "LTS" version. It takes 2 minutes!
+*   **(If you get a permission error):** try: `sudo npm install -g @google/gemini-cli`. 
+*   **🔐 Password Warning:** When you type `sudo`, it will ask for your computer password. **You will not see any characters (not even stars) as you type.** This is normal! Just type your password and hit `Enter`.
+
+---
+
+## 🛠 Troubleshooting (If things go wrong)
+
+*   **"npm: command not found":** You don't have Node.js installed. Download it at [nodejs.org](https://nodejs.org).
+*   **"gemini: command not found":** Your computer hasn't registered the installation yet. Close your Terminal window, open a new one, and try typing `gemini` again.
+*   **"Missing API Key":** See Phase 2 below. You must have your key saved in the `.env` file!
+*   **"Permission Denied":** Always try adding `sudo` to the beginning of the command.
 
 ### Step 3: Download the Code
 Copy this exact line of code, paste it into your Terminal, and press Enter:
