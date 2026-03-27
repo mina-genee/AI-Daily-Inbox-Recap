@@ -79,7 +79,7 @@ launchctl load automation/com.user.aidailyupdate.plist
 
 ---
 
-## 🧑‍💻 For Developers (How to modify this skill)
+## How to modify this skill
 If you know how to code and want to change the colors, logic, or send it to Slack instead of Gmail:
 
 *   **Edit the files:** Open the `ai-daily-update/` folder on your computer. You can change the design in `assets/template.html` or add a new delivery method in the `adapters/` folder (we've included a `slack_adapter.py` template). The core prompt logic lives in `SKILL.md`.
