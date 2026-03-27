@@ -43,7 +43,7 @@ npm install -g @google/gemini-cli
 ### Step 3: Download the Code
 Copy this exact line of code, paste it into your Terminal, and press Enter:
 ```bash
-git clone https://github.com/yourusername/ai-daily-update.git
+git clone https://github.com/mina-genee/ai-daily-update.git
 cd ai-daily-update
 ```
 
