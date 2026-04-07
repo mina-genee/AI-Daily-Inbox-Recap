@@ -9,104 +9,104 @@ This is a "Skill" for the Gemini AI. Once installed, you can simply ask your AI 
 
 ---
 
-## 🛠 Phase 1: The One-Time Setup
-Before the AI can do its magic, we need to give your computer the right tools. You only have to do this once.
+## 🛒 Phase 1: Gather Your "Ingredients"
+*Complete this checklist before you touch any code.*
 
-### Step 1: Open your "Terminal"
-The Terminal is just a text-based way to talk to your computer.
+- [ ] **1. Download Node.js**
+  - Go to [nodejs.org](https://nodejs.org/) and download the **"LTS"** (Long Term Support) version.
+  - If asked which version to download:
+    - 🍎 **Newer Macs (M1/M2/M3):** Choose **ARM64**
+    - 🍎 **Older Macs (Intel) / 🪟 Windows:** Choose **x64**
+  - Run the installer and click "Next" through the defaults. This is the "engine" that runs the app.
 
-*   🍎 **If you are on a Mac:** Press `Command + Space` on your keyboard, type the word `Terminal`, and press `Enter`. A black or white box will pop up.
-*   🪟 **If you are on Windows:** Open your Start menu, type the word `PowerShell`, and press `Enter`.
+- [ ] **2. Get your Gemini API Key**
+  - Go to [Google AI Studio](https://aistudio.google.com/app/apikey).
+  - Click **"Create API Key"**.
+  - **Copy this key**; we will paste it into the app in the next phase.
 
-### Step 2: Install the Gemini CLI
-This skill runs on the Gemini AI Command Line tool. You need to install it first. Copy this code, paste it into your Terminal, and press Enter:
-```bash
-npm install -g @google/gemini-cli
-```
-*   **(If you get an error saying 'npm not found' or 'zsh: command not found: npm'):** Your computer needs a tool called Node.js. 
-    1. Go to **[nodejs.org](https://nodejs.org)** in your web browser.
-    2. Click the button to download the **"LTS" (Long Term Support)** version.
-    3. Open the downloaded file and run the installer (just click "Next" through the default settings).
-    4. Once finished, **close your Terminal window entirely and open a new one**. Then try the `npm install` command again!
-*   **(If you get a permission error):** try: `sudo npm install -g @google/gemini-cli`. 
-*   **🔐 Password Warning:** When you type `sudo`, it will ask for your computer password. **You will not see any characters (not even stars) as you type.** This is normal! Just type your password and hit `Enter`.
+- [ ] **3. Get your Google Cloud Credentials**
+  *This allows the AI to securely read your email. Follow these exact clicks:*
+  1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+  2. **Select a Project** (top left) ➔ **New Project** ➔ Name it "AI Inbox Recap" ➔ **Create**.
+  3. Search bar (top): Type **"Gmail API"** ➔ Click it ➔ **Enable**.
+  4. Sidebar (left): **OAuth consent screen**.
+      - Choose **External** ➔ **Create**.
+      - Fill in **App Name** (e.g., "My Recap") and your email. Skip everything else.
+      - Scroll to **"Test Users"** ➔ **Add Users** ➔ **Add your own Gmail address** (Crucial: the app won't let you log in without this!). ➔ **Save**.
+  5. Sidebar (left): **Credentials**.
+      - **+ Create Credentials** (top) ➔ **OAuth client ID**.
+      - Application type: **Desktop App** ➔ Name it "Inbox App" ➔ **Create**.
+  6. A box will pop up. Click **Download JSON**.
+  7. **Crucial:** Find that file in your Downloads and rename it exactly to: `credentials.json`.
 
 ---
 
-## 🛠 Troubleshooting (If things go wrong)
+## 🛠️ Phase 2: Installation (One-Time Setup)
 
-*   **"npm: command not found":** Download and install Node.js from **[nodejs.org](https://nodejs.org)**. If asked, choose **ARM64** for newer Macs (M1/M2/M3 chips) or **x64** for older Intel Macs and Windows PCs.
-*   **"gemini: command not found":** Your computer hasn't registered the installation yet. Close your Terminal window, open a new one, and try typing `gemini` again.
-*   **"Missing API Key":** See Phase 2 below. You must have your key saved in the `.env` file!
-*   **"Permission Denied":** Always try adding `sudo` to the beginning of the command.
+### Step 1: Open your Terminal
+- 🍎 **Mac:** Press `Command + Space`, type **Terminal**, and press `Enter`.
+- 🪟 **Windows:** Open Start, type **PowerShell**, and press `Enter`.
+
+### Step 2: Install the Gemini CLI
+Paste this into your Terminal and press `Enter`:
+```bash
+npm install -g @google/gemini-cli
+```
+
+> ⚠️ **If you get a "Permission Denied" error**, run this instead:
+> ```bash
+> sudo npm install -g @google/gemini-cli
+> ```
+> 🔐 **Password Warning:** After typing a `sudo` command, your Terminal will ask for your computer password. You will not see any characters as you type — not even stars. This is normal! Just type your password and press `Enter`.
+
+> ❌ **"npm: command not found"?** You missed the Node.js installation in Phase 1. Go back and complete that step first, then return here.
 
 ### Step 3: Download the Code
-You don't need any special developer tools to get the code. Just paste this line into your Terminal and hit Enter. It will download and unzip everything for you:
+Paste this into your Terminal and hit `Enter`:
 ```bash
 curl -L https://github.com/mina-genee/AI-Daily-Inbox-Recap/archive/refs/heads/main.zip -o ai-daily-update.zip && unzip ai-daily-update.zip && cd AI-Daily-Inbox-Recap-main
 ```
 
-### Step 4: Set Your Preferences
-Tell the AI your email address and what rules you want it to follow. Run these two lines to create your settings files:
+### Step 4: Add Your Ingredients
+1. **The Credentials:** Drag your `credentials.json` file directly into the `AI-Daily-Inbox-Recap-main` folder.
+
+    > ❌ **"Missing Credentials" error later?** Make sure `credentials.json` is inside the project folder — not still sitting in your Downloads!
+
+2. **The API Key:** Paste this into your terminal (replace `PASTE_YOUR_KEY_HERE` with your key from Phase 1, Step 2):
 ```bash
-cp env.example .env
-cp config.example.yaml config.yaml
+    echo "GEMINI_API_KEY=PASTE_YOUR_KEY_HERE" > .env
 ```
-*Open the `config.yaml` file in any text editor. You can type out plain-English rules like "Flag emails from investors as Urgent!"*
+
+    > ❌ **"Missing API Key" error later?** This means the key wasn't saved correctly. Re-run the command above, making sure you replaced `PASTE_YOUR_KEY_HERE` with your actual key before pressing `Enter`.
 
 ### Step 5: Install the Skill
-Now, let's teach the AI how to do this specific job. In your Terminal, paste this code and press Enter:
+Paste this into your Terminal:
 ```bash
 gemini skills install ./ --scope user
 ```
 
----
-
-## ⚠️ Phase 2: Connecting the AI's "Brain" (The API Key)
-To use this, Gemini needs a key to connect to Google's servers. 
-
-Did you get an error saying "you must specify the GEMINI_API_KEY"? Don't panic! This just means your AI needs its key. Here is exactly how to fix it:
-
-1. **Get your free key**: Go to [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) in your web browser.
-2. Click the blue button that says "Create API key".
-3. Copy the long string of letters and numbers it gives you.
-4. Go back to your Terminal. We are going to save this key to a hidden file so you never have to enter it again.
-5. Copy the code below, but replace `PASTE_YOUR_KEY_HERE` with your actual long key, then paste it into the Terminal and press Enter:
-   ```bash
-   echo "GEMINI_API_KEY=PASTE_YOUR_KEY_HERE" >> .env
-   ```
+> ❌ **"gemini: command not found"?** Your computer hasn't registered the installation yet. Close your Terminal window, open a fresh one, and try this step again.
 
 ---
 
-## 🚀 Phase 3: How to Actually Use It!
-You are fully set up! Whenever you want your daily briefing, here is what you do:
+## 📬 Phase 3: How to Actually Use It!
 
-1. Open your Terminal.
-2. Type `gemini` and press `Enter`. You will see a greeting welcoming you to the Gemini CLI.
-3. Now that you are inside the AI chat, simply type:
-   **"Run my AI Daily Update."**
+1. Open your **Terminal**.
+2. Type `gemini` and press `Enter`.
+3. Now just talk to the AI! Type: **"Run my AI Daily Update."**
 
-**What to expect when you run this:**
-*   The AI will quietly scan your inbox and calendar in the background.
-*   It will apply the custom rules you wrote in `config.yaml`.
-*   Wait about 30-60 seconds.
-*   Check your Gmail! A beautifully formatted intelligence brief will be waiting in your inbox.
-
-### ⏱️ Want it to run automatically every day? (macOS only)
-If you are on a Mac, you don't even have to ask. You can tell your computer to run this every day at 5:00 PM EST. Just run this command from the repo folder:
-```bash
-launchctl load automation/com.user.aidailyupdate.plist
-```
+**First-Time Login:**
+- A browser window will pop up. Log in with your Gmail.
+- You will see a "Google hasn't verified this app" screen. Click **Advanced** ➔ **Go to [App Name] (unsafe)**. (This is safe; it's *your* private app!)
+- Copy the code Google gives you, paste it back into your terminal, and hit `Enter`.
 
 ---
 
 ## 🎨 Make it Yours (No coding required)
-Don't like the colors? Want to send it to Slack instead of Gmail? You don't need to be a developer to customize this skill!
 
-*   **Change the Design:** Open the `assets/template.html` file in any text editor (like Notepad or TextEdit). You can change the hex color codes (like `#FFFFFF` for white) or swap out the fonts without breaking the AI's logic.
-*   **Change the Rules:** Open `config.yaml`. Under the `rules` section, just type what you want the AI to do in plain English. For example: *"If an email mentions 'invoice', always put it in Action Required."*
-*   **Share your changes:** If you create a great new color scheme or rule set, go to your Terminal and run:
-    ```bash
-    gemini skills package ./
-    ```
-    This creates a new `.skill` file that you can send to your friends or team so they can use your exact version!
+- **Change the Rules:** Open `config.yaml` in any text editor (like Notepad). Under the `rules` section, just type what you want the AI to do in plain English. Example: *"If an email mentions 'invoice', always mark it as High Priority."*
+- **Share the Magic:** If you create a great new rule set, go to your Terminal and run:
+```bash
+gemini skills package ./
+```
+This creates a `.skill` file you can send to your friends so they can use your exact version!
